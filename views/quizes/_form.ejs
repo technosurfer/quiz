@@ -2,5 +2,19 @@
 <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" /><p>
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" /><p>
+<label for="tematica" class="rem">Temática:</label>
+<select id="tematica" name="quiz[tematica]">
+<%
+  var tema = ['otro', 'Humanidades', 'Ocio', 'Ciencia', 'Tecnología'];
+  for (var i in tema){
+  	if (tema[i]===quiz.tematica){%>
+  	   <option value="<%=tema[i]%>" selected><%=tema[i]%></option>
+
+  	<%}
+  	else{%>
+  		<option value="<%=tema[i]%>" ><%=tema[i]%></option>
+  	<%}
+  }%>
+</select><p>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
