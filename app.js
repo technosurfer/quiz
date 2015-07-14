@@ -39,6 +39,27 @@ app.use(function(req,res,next){
 
 });
 
+//middleware de auto-logout
+app.use(function(req,res,next){
+
+    if (req.session.user){
+
+        horaActual=new Date().getTime();
+        if (horaActual - req.session.inicioSesion > 120000){
+            delete req.session.user;
+            res.redirect('/login');
+
+        }
+        else{
+            req.session.inicioSesion=new Date().getTime();
+        }
+    }
+    
+
+    next();
+
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

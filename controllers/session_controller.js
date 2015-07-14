@@ -32,6 +32,7 @@ exports.create=function(req,res){
 		}
 
 		req.session.user = {id:user.id,username:user.username};
+		req.session.inicioSesion=new Date().getTime();
 
 		res.redirect(req.session.redir.toString());
 	});
